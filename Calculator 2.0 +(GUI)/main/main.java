@@ -11,6 +11,7 @@ import java.awt.event.*;
 public class main{
 	public static void main(String[] args) {
 		gui Gui = new gui();
+		Scann sc = new Scann();
 		Gui.go();
     }
 }
