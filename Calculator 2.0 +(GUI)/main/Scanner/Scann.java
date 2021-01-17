@@ -11,7 +11,7 @@ public class Scann{
 	String line = "";
 	byte index;
 	
-	//java.util.Scanner in = new java.util.Scanner(System.in);
+	java.util.Scanner in = new java.util.Scanner(System.in);
 	public void takeLine(String line){
 		//line = in.nextLine();
 		line = line.replaceAll("\\s+", "");
@@ -51,28 +51,36 @@ public class Scann{
 	public char take_operation(){
 		return this.op;
 	}
-	public void plus(Scann sc){
-		Plus p = new Plus();
+	public double view_oper(Scann sc){
 		double a = sc.take_a();
 		double b = sc.take_b();
-		p.plus_take_a(a);
-		p.plus_take_b(b);
-		p.plus();
-		System.out.println("");
-		System.out.print("Summ  " + a + "  +  " + b + "  =  ");
-		System.out.println(p.plus_get_c());
-		System.out.println("");
+		double c = 0;
+		switch(this.op){
+			case('+'):
+				Plus p = new Plus();
+				p.plus_take_a(a);
+				p.plus_take_b(b);
+				p.plus();
+				System.out.println("");
+				System.out.print("Summ  " + a + "  +  " + b + "  =  ");
+				System.out.println(p.plus_get_c());
+				System.out.println("");
+				c = p.plus_get_c();
+				break;
+			
+			case('-'):
+				Minus m = new Minus();
+				m.minus_take_a(a);
+				m.minus_take_b(b);
+				m.minus();
+				System.out.println("");
+				System.out.print("Minus  " + a + "  -  " + b + "  =  ");
+				System.out.println(m.minus_get_c());
+				System.out.println("");
+				c = m.minus_get_c();
+				break;
+		}
+		return c;
 	}
-	public void minus(Scann sc){
-		Minus m = new Minus();
-		double a = sc.take_a();
-		double b = sc.take_b();
-		m.minus_take_a(a);
-		m.minus_take_b(b);
-		m.minus();
-		System.out.println("");
-		System.out.print("Minus  " + a + "  -  " + b + "  =  ");
-		System.out.println(m.minus_get_c());
-		System.out.println("");
-	}
+
 }
